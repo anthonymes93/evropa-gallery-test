@@ -44,7 +44,7 @@ async def run():
                 try:
                     await page.locator("a.bwg_lightbox:visible").first.click(timeout=5000)
                     await page.wait_for_timeout(1200)
-                    overlay = await page.locator('[id*="spider_popup"], .bwg_popup, .bwg-lightbox').count()
+                    overlay = await page.locator('#static-gallery-lightbox:visible').count()
                     if not overlay:
                         issues.append(("LIGHTBOX_FAILED", "No gallery lightbox overlay found after clicking first image"))
                     await page.reload(wait_until="domcontentloaded")
