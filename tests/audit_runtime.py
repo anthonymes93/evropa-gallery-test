@@ -57,6 +57,17 @@ async def run():
                     print("  pagination NEXT: works without WordPress AJAX")
                 except Exception as exc:
                     issues.append(("PAGINATION_FAILED", str(exc)[:300]))
+            if path == "/contact-us/":
+                try:
+                    await page.route("**/api/contact", lambda route: route.fulfill(status=200, content_type="application/json", body='{"ok":true}'))
+                    await page.locator("#wpforms-7-field_0").fill("Audit Tester")
+                    await page.locator("#wpforms-7-field_1").fill("audit@example.com")
+                    await page.locator("#wpforms-7-field_2").fill("Checking the independent form")
+                    await page.locator("#wpforms-submit-7").click(timeout=5000)
+                    await page.get_by_text("Thank you. Your message has been sent.").wait_for(timeout=5000)
+                    print("  contact form: independent endpoint wiring works (mock delivery)")
+                except Exception as exc:
+                    issues.append(("CONTACT_FORM_FAILED", str(exc)[:300]))
             for item in await page.locator("img").evaluate_all("(images) => images.filter(i => i.complete && !i.naturalWidth && i.hasAttribute('src') && i.getAttribute('src') !== '#').map(i => i.currentSrc || i.src)"):
                 issues.append(("BROKEN_IMG", item))
             print(path, "PASS" if not issues else f"{len(issues)} issue(s)")
