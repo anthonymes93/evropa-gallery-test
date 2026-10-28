@@ -40,6 +40,13 @@ async def run():
             page.on("requestfailed", lambda req: issues.append(("FAILED", req.url)) if urlsplit(req.url).hostname in {"127.0.0.1", "localhost"} else None)
             await page.goto(f"http://127.0.0.1:{PORT}{path}", wait_until="domcontentloaded", timeout=30000)
             await page.wait_for_timeout(4500)
+            if path == "/projects/":
+                try:
+                    await page.locator("a.next-page-0").first.click(timeout=5000)
+                    await page.wait_for_url("**/projects/index2822.html*", timeout=8000)
+                    print("  pagination NEXT: works without WordPress AJAX")
+                except Exception as exc:
+                    issues.append(("PAGINATION_FAILED", str(exc)[:300]))
             for item in await page.locator("img").evaluate_all("(images) => images.filter(i => i.complete && !i.naturalWidth && i.getAttribute('src') !== '#').map(i => i.currentSrc || i.src)"):
                 issues.append(("BROKEN_IMG", item))
             print(path, "PASS" if not issues else f"{len(issues)} issue(s)")
