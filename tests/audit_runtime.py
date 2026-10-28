@@ -57,7 +57,7 @@ async def run():
                     print("  pagination NEXT: works without WordPress AJAX")
                 except Exception as exc:
                     issues.append(("PAGINATION_FAILED", str(exc)[:300]))
-            for item in await page.locator("img").evaluate_all("(images) => images.filter(i => i.complete && !i.naturalWidth && i.getAttribute('src') !== '#').map(i => i.currentSrc || i.src)"):
+            for item in await page.locator("img").evaluate_all("(images) => images.filter(i => i.complete && !i.naturalWidth && i.hasAttribute('src') && i.getAttribute('src') !== '#').map(i => i.currentSrc || i.src)"):
                 issues.append(("BROKEN_IMG", item))
             print(path, "PASS" if not issues else f"{len(issues)} issue(s)")
             for kind, url in sorted(set(issues)):
