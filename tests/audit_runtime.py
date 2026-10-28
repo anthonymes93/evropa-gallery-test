@@ -15,7 +15,7 @@ from playwright.async_api import async_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
 PORT = 8765
-PAGES = ["/", "/projects/", "/services/", "/contact-us/"]
+PAGES = ["/", "/projects/", "/projects/index2822.html", "/projects/index43dd.html", "/projects/indexb76e.html", "/services/", "/contact-us/"]
 BLOCKED = {"evropaflooring.com", "www.evropaflooring.com"}
 
 class Handler(http.server.SimpleHTTPRequestHandler):
