@@ -1,13 +1,13 @@
 /**
  * jquery-circle-progress - jQuery Plugin to draw animated circular progress bars:
- * {@link http://kottenator.github.io/jquery-circle-progress/}
+ * {@link https://kottenator.github.io/jquery-circle-progress/}
  *
  * @author Rostyslav Bryzgunov <kottenator@gmail.com>
  * @version 1.2.2
  * @licence MIT
  * @preserve
  */
-// UMD factory - https://github.com/umdjs/umd/blob/d31bb6ee7098715e019f52bdfe27b3e4bfd2b97e/templates/jqueryPlugin.js
+// UMD factory - httpss://github.com/umdjs/umd/blob/d31bb6ee7098715e019f52bdfe27b3e4bfd2b97e/templates/jqueryPlugin.js
 // Uses AMD, CommonJS or browser globals to create a jQuery plugin.
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
@@ -79,9 +79,9 @@
      *     - `{ gradient: ['red', 'green', 'blue'], gradientDirection: [x0, y0, x1, y1] }`
      *     - `{ gradient: [["red", .2], ["green", .3], ["blue", .8]] }`
      *   - image:
-     *     - `{ image: 'http://i.imgur.com/pT0i89v.png' }`
+     *     - `{ image: 'https://i.imgur.com/pT0i89v.png' }`
      *     - `{ image: imageObject }`
-     *     - `{ color: 'lime', image: 'http://i.imgur.com/pT0i89v.png' }` -
+     *     - `{ color: 'lime', image: 'https://i.imgur.com/pT0i89v.png' }` -
      *       color displayed until the image is loaded
      *
      * @default {gradient: ['#3aeabb', '#fdd250']}
@@ -100,7 +100,7 @@
     /**
      * jQuery Animation config.
      * You can pass `false` to disable the animation.
-     * @see http://api.jquery.com/animate/
+     * @see https://api.jquery.com/animate/
      * @type {object|boolean}
      * @default {duration: 1200, easing: 'circleProgressEasing'}
      */
@@ -129,7 +129,7 @@
 
     /**
      * Arc line cap: `'butt'`, `'round'` or `'square'` -
-     * [read more]{@link https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D.lineCap}.
+     * [read more]{@link httpss://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D.lineCap}.
      * @type {string}
      * @default 'butt'
      */

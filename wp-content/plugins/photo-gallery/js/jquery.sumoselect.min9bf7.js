@@ -1,11 +1,11 @@
 "use strict";function _typeof(a){"@babel/helpers - typeof";return _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(a){return typeof a}:function(a){return a&&"function"==typeof Symbol&&a.constructor===Symbol&&a!==Symbol.prototype?"symbol":typeof a},_typeof(a)}function _slicedToArray(a,b){return _arrayWithHoles(a)||_iterableToArrayLimit(a,b)||_unsupportedIterableToArray(a,b)||_nonIterableRest()}function _nonIterableRest(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _unsupportedIterableToArray(a,b){if(a){if("string"==typeof a)return _arrayLikeToArray(a,b);var c=Object.prototype.toString.call(a).slice(8,-1);return"Object"===c&&a.constructor&&(c=a.constructor.name),"Map"===c||"Set"===c?Array.from(a):"Arguments"===c||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(c)?_arrayLikeToArray(a,b):void 0}}function _arrayLikeToArray(a,b){(null==b||b>a.length)&&(b=a.length);for(var c=0,d=Array(b);c<b;c++)d[c]=a[c];return d}function _iterableToArrayLimit(a,b){var c=null==a?null:"undefined"!=typeof Symbol&&a[Symbol.iterator]||a["@@iterator"];if(null!=c){var d,e,f=[],g=!0,h=!1;try{for(c=c.call(a);!(g=(d=c.next()).done)&&(f.push(d.value),!(b&&f.length===b));g=!0);}catch(a){h=!0,e=a}finally{try{g||null==c["return"]||c["return"]()}finally{if(h)throw e}}return f}}function _arrayWithHoles(a){if(Array.isArray(a))return a}/*global jQuery, define, module, require*/ /*!
  * jquery.sumoselect v3.4.6
- * http://hemantnegi.github.io/jquery.sumoselect
+ * https://hemantnegi.github.io/jquery.sumoselect
  * 2016-12-12
  *
  * Copyright 2015 Hemant Negi
  * Email : hemant.frnz@gmail.com
- * Compressor http://refresh-sf.com/
+ * Compressor https://refresh-sf.com/
  */(function(a){"use strict";"function"==typeof define&&define.amd?define(["jquery"],a):"undefined"==typeof exports?a(jQuery):module.exports=a(require("jquery"))})(function(a){"namespace sumo";a.fn.SumoSelect=function(b){// Extra check for IE compatibility
 var c=function(a,b){var c=null;"function"==typeof Event?c=new Event(b,{bubbles:!0}):(c=document.createEvent("Event"),c.initEvent(b,!0,!0)),a.dispatchEvent(c)};// missing forEach on NodeList for IE11
 window.NodeList&&!NodeList.prototype.forEach&&(NodeList.prototype.forEach=Array.prototype.forEach);// This is the easiest way to have default options.
@@ -73,7 +73,7 @@ if(f.search&&b.ftxt.is(a.target))return;break;case 13:b.is_opened?b.optDiv.find(
 setText:function setText(){var a=this,b=0;if(a.placeholder="",a.is_multi){var e=a.E.find(":checked").not(":disabled");//selected options.
 b=e.length,a.placeholder=f.csvDispCount&&e.length>f.csvDispCount?e.length===a.E.find("option").length&&f.captionFormatAllSelected?f.captionFormatAllSelected.replace(/\{0\}/g,e.length):f.captionFormat.replace(/\{0\}/g,e.length):e.toArray().map(function(a){return a.innerText}).join(", ")}else{var g=a.E.find(":checked").not(":disabled");a.placeholder=g.text(),b=g.length}var c=!1;a.placeholder||(c=!0,a.placeholder=a.E.attr("placeholder"),!a.placeholder&&(//if placeholder is there then set it
 a.placeholder=a.E.find("option:disabled:checked").text())),a.select.attr("selected-count",b),a.select.attr("is-selected",b?"true":"false"),a.placeholder=a.placeholder?"".concat(f.prefix," ").concat(a.placeholder):f.placeholder,a.caption.text(a.placeholder),f.showTitle&&a.CaptionCont.attr("title",a.placeholder);//set the hidden field if post as csv is true.
-var d=a.select.find("input.HEMANT123");return d.length&&d.val(a.getSelStr()),c?a.caption.addClass("placeholder"):a.caption.removeClass("placeholder"),a.placeholder},isMobile:function isMobile(){// Adapted from http://www.detectmobilebrowsers.com
+var d=a.select.find("input.HEMANT123");return d.length&&d.val(a.getSelStr()),c?a.caption.addClass("placeholder"):a.caption.removeClass("placeholder"),a.placeholder},isMobile:function isMobile(){// Adapted from https://www.detectmobilebrowsers.com
 // Checks for iOs, Android, Blackberry, Opera Mini, and Windows mobile devices
 for(var a=navigator.userAgent||navigator.vendor||window.opera,b=0;b<f.nativeOnDevice.length;b++)if(0<a.toString().toLowerCase().indexOf(f.nativeOnDevice[b].toLowerCase()))return f.nativeOnDevice[b];return!1},setNativeMobile:function setNativeMobile(){var a=this;a.E.addClass("SelectClass"),a.mob=!0,a.E.change(function(){a.setText()})},floatingList:function floatingList(){var b=this;//called on init and also on resize.
 //O.is_floating = true if window width is < specified float width
