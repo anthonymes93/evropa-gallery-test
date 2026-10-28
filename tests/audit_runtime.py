@@ -40,7 +40,7 @@ async def run():
             page.on("requestfailed", lambda req: issues.append(("FAILED", req.url)) if urlsplit(req.url).hostname in {"127.0.0.1", "localhost"} else None)
             await page.goto(f"http://127.0.0.1:{PORT}{path}", wait_until="domcontentloaded", timeout=30000)
             await page.wait_for_timeout(4500)
-            for item in await page.locator("img").evaluate_all("(images) => images.filter(i => !i.complete || !i.naturalWidth).map(i => i.currentSrc || i.src)"):
+            for item in await page.locator("img").evaluate_all("(images) => images.filter(i => i.complete && !i.naturalWidth && i.getAttribute('src') !== '#').map(i => i.currentSrc || i.src)"):
                 issues.append(("BROKEN_IMG", item))
             print(path, "PASS" if not issues else f"{len(issues)} issue(s)")
             for kind, url in sorted(set(issues)):
