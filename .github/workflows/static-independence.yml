@@ -2,6 +2,9 @@ name: Static site independence audit
 on:
   pull_request:
   workflow_dispatch:
+concurrency:
+  group: static-audit-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   runtime-audit:
     runs-on: ubuntu-latest
