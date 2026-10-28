@@ -17,6 +17,12 @@
       '<div class="sg-counter" aria-live="polite"></div>';
     const style = document.createElement("style");
     style.textContent = [
+      '.bwg-container-0{visibility:visible!important;height:auto!important;overflow:visible!important}',
+      '#bwg_thumbnails_mosaic_0{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(190px,1fr))!important;gap:10px!important;width:100%!important;height:auto!important;overflow:visible!important}',
+      '#bwg_thumbnails_mosaic_0>a.bwg_lightbox{display:block!important;position:relative!important;top:auto!important;left:auto!important;width:100%!important;height:auto!important;visibility:visible!important;opacity:1!important}',
+      '#bwg_thumbnails_mosaic_0 .bwg_mosaic_thumb_spun_0{display:block!important;position:relative!important;top:auto!important;left:auto!important;width:100%!important;height:220px!important;overflow:hidden!important;transform:none!important}',
+      '#bwg_thumbnails_mosaic_0 img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;visibility:visible!important;opacity:1!important;transform:none!important}',
+      '#bwg_thumbnails_mosaic_0>a.bwg_lightbox:hover img{filter:brightness(.88)}',
       '#static-gallery-lightbox[hidden]{display:none!important}',
       '#static-gallery-lightbox{position:fixed;inset:0;z-index:2147483600;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.94);color:#fff}',
       '#static-gallery-lightbox .sg-photo{display:block;max-width:calc(100vw - 110px);max-height:calc(100vh - 90px);width:auto;height:auto;object-fit:contain}',
