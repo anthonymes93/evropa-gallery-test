@@ -1,0 +1,22 @@
+name: Static site independence audit
+on:
+  pull_request:
+  workflow_dispatch:
+concurrency:
+  group: static-audit-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  runtime-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Test local pages with old WordPress host blocked
+        run: python tests/audit_runtime.py
