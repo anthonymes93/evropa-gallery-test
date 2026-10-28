@@ -42,6 +42,16 @@ async def run():
             await page.wait_for_timeout(4500)
             if path == "/projects/":
                 try:
+                    await page.locator("a.bwg_lightbox").first.click(timeout=5000)
+                    await page.wait_for_timeout(1200)
+                    overlay = await page.locator('[id*="spider_popup"], .bwg_popup, .bwg-lightbox').count()
+                    if not overlay:
+                        issues.append(("LIGHTBOX_FAILED", "No gallery lightbox overlay found after clicking first image"))
+                    await page.reload(wait_until="domcontentloaded")
+                    await page.wait_for_timeout(800)
+                except Exception as exc:
+                    issues.append(("LIGHTBOX_FAILED", str(exc)[:300]))
+                try:
                     await page.locator("a.next-page-0").first.click(timeout=5000)
                     await page.wait_for_url("**/projects/index2822.html*", timeout=8000)
                     print("  pagination NEXT: works without WordPress AJAX")
