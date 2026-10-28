@@ -42,7 +42,7 @@ async def run():
             await page.wait_for_timeout(4500)
             if path == "/projects/":
                 try:
-                    await page.locator("a.bwg_lightbox").first.click(timeout=5000)
+                    await page.locator("a.bwg_lightbox:visible").first.click(timeout=5000)
                     await page.wait_for_timeout(1200)
                     overlay = await page.locator('[id*="spider_popup"], .bwg_popup, .bwg-lightbox').count()
                     if not overlay:
